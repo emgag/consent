@@ -1,0 +1,9 @@
+{
+  "entrypoints": {
+    "cmp": {
+      "js": [
+        "/dist/cmp.js"
+      ]
+    }
+  }
+}
