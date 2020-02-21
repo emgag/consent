@@ -1,0 +1,28 @@
+{
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.28.2"
+  },
+  "scripts": {
+    "dev": "encore dev",
+    "watch": "encore dev --watch",
+    "build": "encore production --progress"
+  },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "Firefox ESR",
+    "not dead",
+    "ie >= 11"
+  ],
+  "license": "MIT",
+  "name": "@emgag/cmp",
+  "dependencies": {},
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:emgag/cmp.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  }
+}
