@@ -128,6 +128,16 @@ class Consent {
             && this.allowsMeasurement;
     }
 
+    get keywords() {
+        let k = [];
+
+        this.allowsStandardPurposes ? k.push('consent_all') : k.push('noconsent');
+        this.purposes.forEach(e => k.push('consent_' + e));
+
+        this.log('Keywords', k);
+        return k
+    }
+
     log(msg, ...context) {
         if (!this.config.debug) {
             return;
