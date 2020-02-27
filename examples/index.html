@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>oil.js example</title>
+    <!-- oil.js -->
     <script id="oil-configuration" type="application/configuration">
         {
             "config_version": 2,
@@ -12,9 +13,9 @@
             "timeout": 0
         }
     </script>
-
     <script src="/dist/external/oilstub.1.3.5-RELEASE.min.js"></script>
     <script src="/dist/external/oil.1.3.5-RELEASE.min.js"></script>
+    <!-- cmp wrapper -->
     <script src="/dist/cmp.js"></script>
     <script>
         var __consent = new Consent(new Consent_OilJS(), {debug: true});
@@ -24,7 +25,6 @@
 <div style="background-color: whitesmoke; padding: 10px; margin-bottom: 10px;">
     <button onclick="__consent.optOut(); location.reload();">Clear consent</button>
 </div>
-
 
 <img data-src="https://assets.gameswelt.de/pictures/logo.png" data-consent-requires="standard" data-consent-attr="src">
 <img data-src="https://assets.gameswelt.de/pictures/logo.png" data-consent-requires="1" data-consent-attr="src">
@@ -37,9 +37,11 @@
     __consent.watch(function(){
         document.getElementById('keywords').innerHTML = this.keywords;
     });
+
+    __consent.watch(function(){
+        __consent.inject('test.js');
+    });
 </script>
-
-
 
 <script data-src="test.js" data-consent-requires="standard" data-consent-attr="src"></script>
 
