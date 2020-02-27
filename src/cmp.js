@@ -14,7 +14,7 @@ class Consent {
 
         // merge config
         this._config = {
-            debug: config.hasOwnProperty('debug') ? !!config.debug : false
+            debug: config.hasOwnProperty('debug') ? !!config.debug : false,
         };
 
         // mapping of cmp events to global unified events
@@ -49,11 +49,14 @@ class Consent {
                     break;
 
                 case 'consent':
-                    this.log(this.initialized);
-                    this.log(this.consent);
-                    this.log(this.purposes);
+                    this.log('Initialized?', this.initialized);
+                    this.log('Current consent', this.consent);
+                    this.log('Enabled purposes', this.purposes);
+                    this.log('All standard purposes?', this.allowsStandardPurposes);
             }
         });
+
+        this.watch(this.unblock);
     }
 
     get adsReady() {
@@ -125,12 +128,12 @@ class Consent {
             && this.allowsMeasurement;
     }
 
-    log(msg) {
+    log(msg, ...context) {
         if (!this.config.debug) {
             return;
         }
 
-        console.log("CONSENT:", msg);
+        console.log("CONSENT:", msg, ...context);
     }
 
     runAds(callback, once = false) {
@@ -186,6 +189,61 @@ class Consent {
         }
 
         injector()
+    }
+
+    unblock(){
+        let handler = function(){
+            let elements = document.querySelectorAll('[data-consent-requires]');
+
+            elements.forEach(el => {
+                if(
+                    !('consentAttr' in el.dataset) ||
+                    el.dataset['consentAttr'] === '' ||
+                    'consentManaged' in el.dataset
+                ){
+                    return;
+                }
+
+                if(el.dataset['consentRequires'] === 'standard'){
+                    if(!this.allowsStandardPurposes){
+                        this.log('Element not unblocked, not enough consent', el);
+                        return;
+                    }
+                } else {
+                    let purposes = el.dataset['consentRequires'].split(',');
+
+                    if(!purposes.reduce(
+                        function(acc, cur){return acc && this.purposes.includes(+cur)}.bind(this),
+                        true)
+                    ){
+                        this.log('Element not unblocked, not enough consent', el);
+                        return;
+                    }
+                }
+
+                let attr = el.dataset['consentAttr'].split(',');
+
+                attr.forEach(a => {
+                    if(a in el.dataset){
+                        el.setAttribute(a, el.dataset[a]);
+                    }
+                });
+
+                this.log('Element unblocked', el);
+                el.setAttribute('data-consent-managed', true);
+            });
+        }.bind(this);
+
+        // defer until dom is ready
+        if (
+            document.readyState === 'complete' ||
+            (document.readyState !== 'loading' && !document.documentElement.doScroll)
+        ) {
+            handler();
+            return;
+        }
+
+        document.addEventListener("DOMContentLoaded", handler);
     }
 }
 
