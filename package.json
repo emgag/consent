@@ -18,7 +18,7 @@
   "license": "MIT",
   "name": "@emgag/cmp",
   "dependencies": {},
-  "version": "v0.0.4",
+  "version": "0.0.5",
   "repository": {
     "type": "git",
     "url": "git@github.com:emgag/cmp.git"
