@@ -1,7 +1,18 @@
 'use strict';
 
-// thin layer to store consent data
+
+/**
+ * Wrapper around CPM to store consent data and manage consent events
+ */
 class Consent {
+
+    /**
+     * @param {Object} provider An instance of a provider implementation
+     * @param {function} provider.init Function to be called to initialize provider
+     * @param {function} provider.optOut Function to be called to opt out of consent
+     * @param {Object} config additional configuration
+     * @param {boolean} config.debug whether debug statements should be printed
+     */
     constructor(provider, config) {
         this.provider = provider;
         this.events = {};
@@ -33,6 +44,13 @@ class Consent {
         this.watch(this.unblock);
     }
 
+    /**
+     * List of ad keywords for current consent.
+     *
+     * Additionally, "consent_all" will be added when all standard purposes are allowed, "noconsent" if not.
+     *
+     * @returns {string[]}
+     */
     get keywords() {
         let k = [];
 
@@ -50,6 +68,12 @@ class Consent {
         return k
     }
 
+    /**
+     * Returns true if specific purpose has consent, false if otherwise.
+     *
+     * @param {string} purpose Either a specific purpose (standard/X, custom/X) or "standard" of "custom" for all in this category.
+     * @returns {boolean}
+     */
     allows(purpose){
         if(purpose === 'standard'){
             return this.allowsStandardPurposes()
@@ -77,6 +101,11 @@ class Consent {
         return false;
     }
 
+    /**
+     * Returns true if all custom purposes have consent.
+     *
+     * @returns {boolean}
+     */
     allowsCustomPurposes(){
         for (const property in this.purposes.custom) {
             if (!this.purposes.custom[property]) return false;
@@ -85,6 +114,11 @@ class Consent {
         return true;
     }
 
+    /**
+     * Returns true if all standard purposes have consent.
+     *
+     * @returns {boolean}
+     */
     allowsStandardPurposes(){
         for (const property in this.purposes.standard) {
             if (!this.purposes.standard[property]) return false;
@@ -93,6 +127,12 @@ class Consent {
         return true;
     }
 
+    /**
+     * Prints a debug message to browser console.
+     *
+     * @param msg
+     * @param context
+     */
     log(msg, ...context) {
         if (!this.config.debug) {
             return;
@@ -101,11 +141,23 @@ class Consent {
         console.log("CONSENT:", msg, ...context);
     }
 
+    /**
+     * Triggers specific event
+     *
+     * @param {string} event Event to be triggered.
+     */
     call(event){
         window.postMessage({'type': 'consent', 'event': event}, window.origin);
         this.events[event] = true;
     }
 
+    /**
+     * Registers an event handler for a specific event
+     *
+     * @param {string} event Event to listen for
+     * @param {function} callback Function to be called when event occurs
+     * @param {boolean} once Remove event handler after first run
+     */
     on(event, callback, once = false) {
         if (this.events[event]) {
             // event already called, just run callback
@@ -129,10 +181,22 @@ class Consent {
         window.addEventListener('message', handler);
     }
 
+    /**
+     * Runs callback on consent event, same as on('consent', ...)
+     *
+     * @see on
+     * @param {function} callback
+     * @param {boolean} once
+     */
     watch(callback, once = false) {
         this.on('consent', callback, once)
     }
 
+    /**
+     * Injects an asynchronous script tag into the current page
+     *
+     * @param {string} src URL to the script
+     */
     inject(src) {
         let po = document.createElement('script');
         po.type = 'text/javascript';
@@ -142,6 +206,9 @@ class Consent {
         s.parentNode.insertBefore(po, s);
     }
 
+    /**
+     * Searches for HTML elements to unblock in current document.
+     */
     unblock(){
         const handler = () => {
             const elements = document.querySelectorAll('[data-consent-requires]');
@@ -186,6 +253,11 @@ class Consent {
         document.addEventListener("DOMContentLoaded", handler);
     }
 
+    /**
+     * Clears current consent
+     *
+     * @returns {*}
+     */
     optOut(){
         return this.provider.optOut();
     }
