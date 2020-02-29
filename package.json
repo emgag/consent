@@ -16,12 +16,12 @@
     "ie >= 11"
   ],
   "license": "MIT",
-  "name": "@emgag/cmp",
+  "name": "@emgag/consent",
   "dependencies": {},
-  "version": "0.0.6",
+  "version": "0.0.0",
   "repository": {
     "type": "git",
-    "url": "git@github.com:emgag/cmp.git"
+    "url": "git@github.com:emgag/consent.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
