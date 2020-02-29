@@ -3,7 +3,8 @@ var Encore = require('@symfony/webpack-encore');
 Encore
     .setOutputPath('dist/')
     .setPublicPath('/dist')
-    .addEntry('cmp', './src/cmp.js')
+    .addEntry('oiljs-bundle', './src/oiljs-bundle.js')
+    .addEntry('cookiebot-bundle', './src/cookiebot-bundle.js')
     .copyFiles({
         from: './node_modules/@ideasio/oil.js/release/current',
         to: 'external/[name].[ext]',

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>oil.js example</title>
+    <link rel="stylesheet" type="text/css" href="./example.css">
     <!-- oil.js -->
     <script id="oil-configuration" type="application/configuration">
         {
@@ -10,36 +11,59 @@
             "advanced_settings": true,
             "advanced_settings_purposes_default": true,
             "theme": "light",
-            "timeout": 0
+            "timeout": 0,
+            "customPurposes": [
+                {
+                    "id": 25,
+                    "name": "Custom Purpose 1",
+                    "description": "Lorem!"
+                },
+                {
+                    "id": 26,
+                    "name": "Custom Purpose 2",
+                    "description": "Lorem2!"
+                }
+            ]
         }
     </script>
     <script src="/dist/external/oilstub.1.3.5-RELEASE.min.js"></script>
     <script src="/dist/external/oil.1.3.5-RELEASE.min.js"></script>
     <!-- cmp wrapper -->
-    <script src="/dist/cmp.js"></script>
+    <script src="/dist/oiljs-bundle.js"></script>
     <script>
         var __consent = new Consent(new Consent_OilJS(), {debug: true});
     </script>
 </head>
 <body>
-<div style="background-color: whitesmoke; padding: 10px; margin-bottom: 10px;">
+<div class="info">
     <button onclick="__consent.optOut(); location.reload();">Clear consent</button>
 </div>
+<div class="info" id="keywords"></div>
+<div class="info" id="ads"></div>
 
 <img data-src="https://assets.gameswelt.de/pictures/logo.png" data-consent-requires="standard" data-consent-attr="src">
-<img data-src="https://assets.gameswelt.de/pictures/logo.png" data-consent-requires="1" data-consent-attr="src">
-<img data-src="https://assets.gameswelt.de/pictures/logo.png" data-consent-requires="1,2,5" data-consent-attr="src">
-<img data-src="https://assets.gameswelt.de/pictures/logo.png" data-consent-requires="1,7" data-consent-attr="src">
-
-<div id="keywords"></div>
+<img data-src="https://assets.gameswelt.de/pictures/logo.png" data-consent-requires="standard/1"
+     data-consent-attr="src">
+<img data-src="https://assets.gameswelt.de/pictures/logo.png" data-consent-requires="standard/1,standard/2,standard/5"
+     data-consent-attr="src">
+<img data-src="https://assets.gameswelt.de/pictures/logo.png" data-consent-requires="standard/1,standard/7"
+     data-consent-attr="src">
 
 <script>
-    __consent.watch(function(){
-        document.getElementById('keywords').innerHTML = this.keywords;
+    __consent.watch(function () {
+        document.getElementById('keywords').innerHTML = 'Keywords: ' + this.keywords;
     });
 
-    __consent.watch(function(){
-        __consent.inject('test.js');
+    __consent.watch(function () {
+        this.inject('test.js');
+    })
+
+    __consent.watch(function () {
+        this.allowsStandardPurposes() && this.call('ads');
+    });
+
+    __consent.on('ads', function () {
+        document.getElementById('ads').innerHTML = 'Ads initialized';
     });
 </script>
 

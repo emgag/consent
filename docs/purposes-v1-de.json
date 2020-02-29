@@ -1,0 +1,48 @@
+{
+  "vendorListVersion": 191,
+  "lastUpdated": "2020-02-27T16:21:05Z",
+  "purposes": [
+    {
+      "id": 1,
+      "name": "Speicherung und Zugriff auf Informationen",
+      "description": "Die Speicherung von Informationen oder der Zugriff auf Informationen, die bereits auf Ihrem Gerät gespeichert sind, wie beispielsweise Werbekennungen, Gerätekennungen, Cookies und ähnliche Technologien."
+    },
+    {
+      "id": 2,
+      "name": "Personalisierung",
+      "description": "Die Erhebung und Verarbeitung von Informationen über Ihre Verwendung dieses Dienstes, um anschließend Werbung und/oder Inhalte in anderen Zusammenhängen, beispielsweise auf anderen Websites oder Apps, im Laufe der Zeit für Sie zu personalisieren. Üblicherweise werden die Inhalte der Site oder App herangezogen, um Rückschlüsse hinsichtlich Ihrer Interessen zu ermöglichen, an denen sich die zukünftige Auswahl von Werbung und/oder Inhalten orientiert."
+    },
+    {
+      "id": 3,
+      "name": "Auswahl, Schaltung und Auswertung von Anzeigen",
+      "description": "Die Erhebung von Informationen und die Verknüpfung mit zuvor erhobenen Informationen, um Werbeanzeigen für Sie auszuwählen und zu schalten und um die Schaltung und die Wirksamkeit dieser Werbeanzeigen zu bewerten. Dies umfasst die Nutzung zuvor erhobener Informationen über Ihre Interessen zur Auswahl von Werbeanzeigen, Daten darüber zu verarbeiten, welche Werbeanzeigen angezeigt wurden, wie oft diese angezeigt wurden, wann und wo sie angezeigt wurden und ob auf die Werbeanzeige eine Handlung ihrerseits erfolgte, beispielsweise das Anklicken einer Anzeige oder ein Einkauf. Dies umfasst nicht die Personalisierung, worunter die Erhebung und Verarbeitung von Informationen über Ihre Verwendung dieses Dienstes zu verstehen ist, um anschließend Werbung und/oder Inhalte in anderen Zusammenhängen für Sie zu personalisieren."
+    },
+    {
+      "id": 4,
+      "name": "Auswahl, Schaltung und Auswertung von Inhalten",
+      "description": "Die Erhebung von Informationen und die Verknüpfung mit zuvor erhobenen Informationen, um Inhalte für Sie auszuwählen und zu schalten und um die Schaltung und die Wirksamkeit dieser Inhalte zu bewerten. Dies umfasst die Nutzung zuvor erhobener Informationen über Ihre Interessen zur Auswahl von Inhalten, Daten darüber zu verarbeiten, welche Inhalte angezeigt wurden, wie oft diese angezeigt wurden, wann und wo sie angezeigt wurden und ob auf die Inhalte eine Handlung Ihrerseits erfolgte, beispielsweise das Anklicken von Inhalten. Dies umfasst nicht die Personalisierung, worunter die Erhebung und Verarbeitung von Informationen über Ihre Verwendung dieses Dienstes zu verstehen ist, um anschließend Inhalte und/oder Werbung in anderen Zusammenhängen, beispielsweise Websites oder Apps, im Laufe der Zeit für Sie zu personalisieren."
+    },
+    {
+      "id": 5,
+      "name": "Bewertung",
+      "description": "Die Erhebung von Informationen über Ihre Nutzung der Inhalte und die Verknüpfung mit zuvor erhobenen Informationen, die dazu verwendet werden, Ihre Nutzung des Dienstes zu bewerten, zu verstehen und darüber zu berichten. Dies umfasst nicht die Personalisierung, worunter die Erhebung und Verarbeitung von Informationen über Ihre Verwendung dieses Dienstes zu verstehen ist, um anschließend Inhalte und/oder Werbung in anderen Zusammenhängen, d. h. bei anderen Diensten wie beispielsweise Websites oder Apps, im Laufe der Zeit für Sie zu personalisieren."
+    }
+  ],
+  "features": [
+    {
+      "id": 1,
+      "name": "Abgleichen von Offline-Daten",
+      "description": "Verknüpfen von ursprünglich in anderen Zusammenhängen erhobenen Daten aus Offline-Quellen mit online erhobenen Daten zwecks Förderung eines oder mehrerer Zwecke."
+    },
+    {
+      "id": 2,
+      "name": "Verknüpfen von Geräten",
+      "description": "Verarbeiten von Daten, um mehrere demselben Benutzer gehörende Geräte zwecks Förderung eines oder mehrerer Zwecke zu verknüpfen."
+    },
+    {
+      "id": 3,
+      "name": "Präzise Geostandort-Daten",
+      "description": "Erheben und Unterstützen präziser Geostandort-Daten zwecks Förderung eines oder mehrerer Zwecke."
+    }
+  ]
+}

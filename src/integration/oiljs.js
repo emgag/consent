@@ -1,7 +1,7 @@
 'use strict';
 
 class Consent_OilJS {
-    init(callback){
+    init(consent, callback){
         window.addEventListener('message', e => {
             let event = e.data;
 
@@ -10,21 +10,17 @@ class Consent_OilJS {
                 case 'oil_has_optedin':
                     // collect consent data
                     __cmp('getConsentData', null, (result) => {
-                        let consent = result.consentData;
+                        const consentString = result.consentData;
 
                         // collect accepted purposes
                         __cmp('getPublisherConsents', null, (result) => {
-                            let purposes = [];
-
-                            for (const e in result.standardPurposeConsents) {
-                                result.standardPurposeConsents[e] && purposes.push(+e)
-                            }
-
-                            for (const e in result.customPurposeConsents) {
-                                result.customPurposeConsents[e] && purposes.push(+e)
-                            }
-
-                            callback(purposes, consent);
+                            callback(
+                                {
+                                    'standard': result.standardPurposeConsents,
+                                    'custom': result.customPurposeConsents
+                                },
+                                consentString
+                            );
                         });
                     });
             }
