@@ -1,8 +1,13 @@
 {
   "entrypoints": {
-    "cmp": {
+    "oiljs-bundle": {
       "js": [
-        "/dist/cmp.js"
+        "/dist/oiljs-bundle.js"
+      ]
+    },
+    "cookiebot-bundle": {
+      "js": [
+        "/dist/cookiebot-bundle.js"
       ]
     }
   }

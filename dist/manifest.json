@@ -1,5 +1,6 @@
 {
-  "dist/cmp.js": "/dist/cmp.js",
+  "dist/cookiebot-bundle.js": "/dist/cookiebot-bundle.js",
+  "dist/oiljs-bundle.js": "/dist/oiljs-bundle.js",
   "dist/external/0.1.3.5-RELEASE.chunk.js": "/dist/external/0.1.3.5-RELEASE.chunk.js",
   "dist/external/1.1.3.5-RELEASE.chunk.js": "/dist/external/1.1.3.5-RELEASE.chunk.js",
   "dist/external/2.1.3.5-RELEASE.chunk.js": "/dist/external/2.1.3.5-RELEASE.chunk.js",
