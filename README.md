@@ -1,2 +1,3 @@
-# cmp
-Consent Management Platform tools for EMGAG sites
+# consent
+
+Consent Management Tools for EMGAG sites
