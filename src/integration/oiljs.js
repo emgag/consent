@@ -1,6 +1,14 @@
 'use strict';
 
+import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+
 class Consent_OilJS {
+    constructor(config = {}) {
+        this.config = {
+            scrolllock: config.hasOwnProperty('scrolllock') ? !!config.scrolllock : false,
+        }
+    }
+
     init(consent, callback){
         window.addEventListener('message', e => {
             let event = e.data;
@@ -23,6 +31,26 @@ class Consent_OilJS {
                             );
                         });
                     });
+
+                    break;
+            }
+
+            if (this.config.scrolllock) {
+                switch (event) {
+                    case 'oil_shown':
+                        const overlay = document.getElementsByClassName('as-oil-content-overlay');
+
+                        if(overlay.length > 0){
+                            disableBodyScroll(overlay[0]);
+                        }
+
+                        break;
+
+                    case 'oil_optin_done':
+                    case 'oil_has_optedin':
+                    case 'oil_hide_layer':
+                        clearAllBodyScrollLocks();
+                }
             }
         });
     }
