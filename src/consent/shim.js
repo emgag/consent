@@ -41,6 +41,9 @@ class Consent {
             this.log('All custom purposes?', this.allowsCustomPurposes());
         });
 
+        this.on('dialog_open', ()=> {this.log('Consent popup shown')});
+        this.on('dialog_close', ()=> {this.log('Consent popup close')});
+
         this.watch(this.unblock);
     }
 

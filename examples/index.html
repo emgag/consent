@@ -13,6 +13,14 @@
             "advanced_settings_purposes_default": true,
             "theme": "light",
             "timeout": 0,
+            "locale": {
+                "version": 1,
+                "localeId": "de",
+                "texts": {
+                    "label_intro_heading": "We use cookies and other technologies",
+                    "label_intro": "The website uses cookies, web beacons, JavaScript and similar technologies."
+                }
+            },
             "customPurposes": [
                 {
                     "id": 25,
@@ -32,7 +40,7 @@
     <!-- cmp wrapper -->
     <script src="/dist/oiljs-bundle.js"></script>
     <script>
-        var __consent = new Consent(new Consent_OilJS({scrolllock: true}), {debug: true});
+        var __consent = new Consent(new Consent_OilJS(), {debug: true});
     </script>
 </head>
 <body>
@@ -81,6 +89,17 @@
     __consent.on('ads', function () {
         document.getElementById('ads').innerHTML = 'Ads initialized';
     });
+
+    __consent.on('dialog_open', function(){
+        document.getElementsByTagName('body')[0].classList.add('scroll-lock');
+    });
+
+    __consent.on('dialog_close', function(){
+        document.getElementsByTagName('body')[0].classList.remove('scroll-lock');
+    });
+
+
+
 </script>
 
 <script data-src="test.js" data-consent-requires="standard" data-consent-attr="src"></script>

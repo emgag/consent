@@ -4,3 +4,10 @@
     margin: 10px;
     padding: 10px;
 }
+
+.scroll-lock {
+    overflow: hidden!important;
+    position: fixed!important;
+    left: 0;
+    right: 0;
+}

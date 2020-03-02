@@ -1,20 +1,17 @@
 'use strict';
 
-import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
-
 class Consent_OilJS {
-    constructor(config = {}) {
-        this.config = {
-            scrolllock: config.hasOwnProperty('scrolllock') ? !!config.scrolllock : false,
-        }
-    }
-
     init(consent, callback){
+        this.open = false;
+
         window.addEventListener('message', e => {
             let event = e.data;
 
             switch (event) {
                 case 'oil_optin_done':
+                    consent.call('dialog_close');
+
+                    // break intentionally omitted
                 case 'oil_has_optedin':
                     // collect consent data
                     __cmp('getConsentData', null, (result) => {
@@ -33,25 +30,17 @@ class Consent_OilJS {
                     });
 
                     break;
+
+                case 'oil_shown':
+                    consent.call('dialog_open');
+                    break;
+
+                case 'oil_hide_layer':
+                    consent.call('dialog_close');
+                    break;
+
             }
 
-            if (this.config.scrolllock) {
-                switch (event) {
-                    case 'oil_shown':
-                        const overlay = document.getElementsByClassName('as-oil-content-overlay');
-
-                        if(overlay.length > 0){
-                            disableBodyScroll(overlay[0]);
-                        }
-
-                        break;
-
-                    case 'oil_optin_done':
-                    case 'oil_has_optedin':
-                    case 'oil_hide_layer':
-                        clearAllBodyScrollLocks();
-                }
-            }
         });
     }
 
