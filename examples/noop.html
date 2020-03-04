@@ -10,11 +10,8 @@
     <script>
         var consent_provider = new Consent_Noop({
             domready: true,
-            callback: function(consent, callback){
-                console.log('This function can override ')
-            }
         });
-        consent_provider.purposes.standard["5"] = true;
+        consent_provider.purposes.standard["5"] = false;
         var __consent = new Consent(consent_provider, {debug: true});
     </script>
 </head>
