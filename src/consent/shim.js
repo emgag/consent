@@ -1,6 +1,5 @@
 'use strict';
 
-
 /**
  * Wrapper around CPM to store consent data and manage consent events
  */
@@ -213,7 +212,8 @@ class Consent {
      * Searches for HTML elements to unblock in current document.
      */
     unblock(){
-        const handler = () => {
+        // defer until dom is ready
+        this.domready(() => {
             const elements = document.querySelectorAll('[data-consent-requires]');
 
             elements.forEach(el => {
@@ -242,18 +242,23 @@ class Consent {
                 this.log('Element unblocked', el);
                 el.setAttribute('data-consent-managed', true);
             });
-        };
+        });
+    }
 
-        // defer until dom is ready
+    /**
+     * Wrapper around DOM ready event
+     * @param {function} callback
+     */
+    domready(callback){
         if (
             document.readyState === 'complete' ||
             (document.readyState !== 'loading' && !document.documentElement.doScroll)
         ) {
-            handler();
+            callback();
             return;
         }
 
-        document.addEventListener("DOMContentLoaded", handler);
+        document.addEventListener("DOMContentLoaded", callback);
     }
 
     /**
