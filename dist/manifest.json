@@ -1,5 +1,6 @@
 {
   "dist/cookiebot-bundle.js": "/dist/cookiebot-bundle.js",
+  "dist/noop-bundle.js": "/dist/noop-bundle.js",
   "dist/oiljs-bundle.js": "/dist/oiljs-bundle.js",
   "dist/external/0.1.3.5-RELEASE.chunk.js": "/dist/external/0.1.3.5-RELEASE.chunk.js",
   "dist/external/1.1.3.5-RELEASE.chunk.js": "/dist/external/1.1.3.5-RELEASE.chunk.js",
