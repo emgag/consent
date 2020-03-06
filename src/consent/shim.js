@@ -184,7 +184,17 @@ class Consent {
     }
 
     /**
-     * Runs callback on consent event, same as on('consent', ...)
+     * Wait for consent and run callback once. Shorthand for on('consent', callback, true).
+     *
+     * @see on
+     * @param {function} callback
+     */
+    wait(callback) {
+        this.on('consent', callback, true)
+    }
+
+    /**
+     * Runs callback on consent event. Shorthand for on('consent', ...)
      *
      * @see on
      * @param {function} callback
