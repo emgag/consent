@@ -11,7 +11,7 @@ class Consent_OilJS {
                 case 'oil_optin_done':
                     consent.call('dialog_close');
 
-                    // break intentionally omitted
+                    // fallthrough
                 case 'oil_has_optedin':
                     // collect consent data
                     __cmp('getConsentData', null, (result) => {
