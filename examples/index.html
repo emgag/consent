@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>oil.js example</title>
     <link rel="stylesheet" type="text/css" href="./example.css">
+    <!--  oil.js stub  -->
+    <script src="/dist/external/oilstub.1.3.5-RELEASE.min.js"></script>
+    <!-- cmp wrapper -->
+    <script src="/dist/oiljs-bundle.js"></script>
+    <script>
+        var __consent = new Consent(new Consent_OilJS(), {debug: true});
+    </script>
     <!-- oil.js -->
     <script id="oil-configuration" type="application/configuration">
         {
@@ -35,13 +42,7 @@
             ]
         }
     </script>
-    <script src="/dist/external/oilstub.1.3.5-RELEASE.min.js"></script>
     <script src="/dist/external/oil.1.3.5-RELEASE.min.js"></script>
-    <!-- cmp wrapper -->
-    <script src="/dist/oiljs-bundle.js"></script>
-    <script>
-        var __consent = new Consent(new Consent_OilJS(), {debug: true});
-    </script>
 </head>
 <body>
 <div class="info">
