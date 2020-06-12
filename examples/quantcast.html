@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>noop example</title>
+    <title>quantcast example</title>
     <link rel="stylesheet" type="text/css" href="./example.css">
-    <!-- cmp wrapper -->
-    <script src="/dist/noop-bundle.js"></script>
+    <script src="/dist/quantcast-bundle.js"></script>
     <script>
-        var consent_provider = new Consent_Noop({
-            domready: true,
+        var consent_provider = new Consent_Quantcast({
+            quantcastId: 'ymSNkjjBs7dcM',
         });
-        consent_provider.purposes.standard["5"] = false;
         var __consent = new Consent(consent_provider, {debug: true});
     </script>
 </head>
@@ -50,11 +48,11 @@
         document.getElementById('keywords').innerHTML = 'Keywords: ' + this.keywords.join(', ');
     });
 
-    __consent.watch(function () {
+    __consent.wait(function () {
         this.inject('test.js');
     });
 
-    __consent.watch(function () {
+    __consent.wait(function () {
         this.allowsStandardPurposes() && this.call('ads');
     });
 
