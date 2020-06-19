@@ -5,6 +5,7 @@ Encore
     .setPublicPath('/dist')
     .addEntry('noop-bundle', './src/noop-bundle.js')
     .addEntry('quantcast-bundle', './src/quantcast-bundle.js')
+    .addEntry('civic-bundle', './src/civic-bundle.js')
     .disableSingleRuntimeChunk()
     .cleanupOutputBeforeBuild()
     .enableSourceMaps(!Encore.isProduction())

@@ -1,18 +1,18 @@
 {
   "entrypoints": {
-    "cookiebot-bundle": {
-      "js": [
-        "/dist/cookiebot-bundle.js"
-      ]
-    },
     "noop-bundle": {
       "js": [
         "/dist/noop-bundle.js"
       ]
     },
-    "oiljs-bundle": {
+    "quantcast-bundle": {
       "js": [
-        "/dist/oiljs-bundle.js"
+        "/dist/quantcast-bundle.js"
+      ]
+    },
+    "civic-bundle": {
+      "js": [
+        "/dist/civic-bundle.js"
       ]
     }
   }

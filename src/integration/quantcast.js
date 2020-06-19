@@ -192,10 +192,10 @@ class Consent_Quantcast {
                         this.open = false
                     }
 
-                    if(tcData.hasOwnProperty('publisher')){
+                    if(tcData.hasOwnProperty('purpose') && tcData.hasOwnProperty('publisher')) {
                         callback(
                             {
-                                'standard': this.annotateStandardConsents(tcData.publisher.consents),
+                                'standard': this.annotateStandardConsents(tcData.purpose.consents),
                                 'special': tcData.publisher.customPurpose.consents
                             },
                             tcData.tcString

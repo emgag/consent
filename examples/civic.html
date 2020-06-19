@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>civic example</title>
+    <link rel="stylesheet" type="text/css" href="./example.css">
+    <style type="text/css">
+
+    </style>
+    <script src="/dist/civic-bundle.js"></script>
+    <script src="https://cc.cdn.civiccomputing.com/9/cookieControl-9.2.1.min.js"></script>
+    <script>
+        var consent_provider = new Consent_Civic({});
+        var __consent = new Consent(consent_provider, {debug: true});
+    </script>
+    <script>
+        var config = {
+            apiKey: '34f2b09060ed07fb9dc437ff38a248a5bae72246',
+            product: 'PRO',
+            mode: 'gdpr',
+            subDomains: true,
+            initialState: 'box',
+            rejectButton: false,
+            position: 'left',
+            layout: 'popup',
+            theme: 'light',
+            text: {
+                iabCMP: {
+                    panelTitle: 'panelTitle',
+                    panelIntro1: 'panelIntro1',
+                    panelIntro2: 'panelIntro2',
+                    panelIntro3: 'panelIntro3',
+                    aboutIab: 'aboutIab',
+                    iabName: 'iabName',
+                    iabLink: '',
+                    dataUse: 'dataUse',
+                    vendors: 'vendors',
+                    purposes: 'purposes',
+                    specialPurposes: 'specialPurposes',
+                    features: 'features',
+                    specialFeatures: 'specialFeatures',
+                    purposeLegitimateInterest: 'purposeLegitimateInterest',
+                    vendorLegitimateInterest: 'vendorLegitimateInterest',
+                    relyConsent: 'relyConsent',
+                    relyLegitimateInterest: 'relyLegitimateInterest',
+                    acceptAll: 'acceptAll',
+                    rejectAll: 'rejectAll',
+                    savePreferences: 'savePreferences',
+                },
+            },
+            branding: {
+                removeAbout: true,
+                removeIcon: false
+            },
+            iabCMP: true,
+            locale: 'de',
+            locales: [],
+            location: 'CH',
+            iabConfig: {
+                language: 'de',
+                publisherCC: 'CH'
+            },
+        }
+
+        CookieControl.load(config);
+    </script>
+
+
+</head>
+<body>
+<div class="info">
+    <button onclick="__consent.optOut(); location.reload();">Clear consent</button>
+</div>
+<div class="info" id="keywords"></div>
+<div class="info" id="ads"></div>
+
+<p>
+    <img data-src="https://assets.gameswelt.de/pictures/logo.png" data-consent-requires="standard"
+         data-consent-attr="src">
+    <img data-src="https://assets.gameswelt.de/pictures/logo.png" data-consent-requires="standard/1"
+         data-consent-attr="src">
+    <img data-src="https://assets.gameswelt.de/pictures/logo.png"
+         data-consent-requires="standard/1,standard/2,standard/5"
+         data-consent-attr="src">
+    <img data-src="https://assets.gameswelt.de/pictures/logo.png"
+         data-consent-requires="standard/1,standard/7"
+         data-consent-attr="src">
+</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua. Varius vel pharetra vel turpis nunc eget. Proin nibh nisl
+    condimentum id. Id interdum velit laoreet id donec. Turpis nunc eget lorem dolor sed viverra
+    ipsum nunc aliquet. Vitae nunc sed velit dignissim sodales ut eu sem integer. Nulla facilisi
+    morbi tempus iaculis urna id volutpat lacus. Pellentesque diam volutpat commodo sed egestas
+    egestas fringilla phasellus. Turpis nunc eget lorem dolor sed. Ultricies mi eget mauris pharetra
+    et ultrices neque. Non blandit massa enim nec dui nunc. Egestas diam in arcu cursus euismod
+    quis.</p>
+
+<p>Varius sit amet mattis vulputate enim. Sollicitudin aliquam ultrices sagittis orci a scelerisque.
+    Commodo ullamcorper a lacus vestibulum sed arcu non. Non sodales neque sodales ut etiam sit
+    amet. Viverra orci sagittis eu volutpat odio facilisis mauris. Habitant morbi tristique senectus
+    et netus et malesuada. Fusce id velit ut tortor. Pulvinar pellentesque habitant morbi tristique.
+    Mauris pellentesque pulvinar pellentesque habitant morbi tristique. Consequat interdum varius
+    sit amet mattis vulputate. Aliquam nulla facilisi cras fermentum odio. Elementum nisi quis
+    eleifend quam adipiscing. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Fusce ut
+    placerat orci nulla pellentesque dignissim.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua. Varius vel pharetra vel turpis nunc eget. Proin nibh nisl
+    condimentum id. Id interdum velit laoreet id donec. Turpis nunc eget lorem dolor sed viverra
+    ipsum nunc aliquet. Vitae nunc sed velit dignissim sodales ut eu sem integer. Nulla facilisi
+    morbi tempus iaculis urna id volutpat lacus. Pellentesque diam volutpat commodo sed egestas
+    egestas fringilla phasellus. Turpis nunc eget lorem dolor sed. Ultricies mi eget mauris pharetra
+    et ultrices neque. Non blandit massa enim nec dui nunc. Egestas diam in arcu cursus euismod
+    quis.</p>
+
+<p>Varius sit amet mattis vulputate enim. Sollicitudin aliquam ultrices sagittis orci a scelerisque.
+    Commodo ullamcorper a lacus vestibulum sed arcu non. Non sodales neque sodales ut etiam sit
+    amet. Viverra orci sagittis eu volutpat odio facilisis mauris. Habitant morbi tristique senectus
+    et netus et malesuada. Fusce id velit ut tortor. Pulvinar pellentesque habitant morbi tristique.
+    Mauris pellentesque pulvinar pellentesque habitant morbi tristique. Consequat interdum varius
+    sit amet mattis vulputate. Aliquam nulla facilisi cras fermentum odio. Elementum nisi quis
+    eleifend quam adipiscing. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Fusce ut
+    placerat orci nulla pellentesque dignissim.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+    labore et dolore magna aliqua. Varius vel pharetra vel turpis nunc eget. Proin nibh nisl
+    condimentum id. Id interdum velit laoreet id donec. Turpis nunc eget lorem dolor sed viverra
+    ipsum nunc aliquet. Vitae nunc sed velit dignissim sodales ut eu sem integer. Nulla facilisi
+    morbi tempus iaculis urna id volutpat lacus. Pellentesque diam volutpat commodo sed egestas
+    egestas fringilla phasellus. Turpis nunc eget lorem dolor sed. Ultricies mi eget mauris pharetra
+    et ultrices neque. Non blandit massa enim nec dui nunc. Egestas diam in arcu cursus euismod
+    quis.</p>
+
+<p>Varius sit amet mattis vulputate enim. Sollicitudin aliquam ultrices sagittis orci a scelerisque.
+    Commodo ullamcorper a lacus vestibulum sed arcu non. Non sodales neque sodales ut etiam sit
+    amet. Viverra orci sagittis eu volutpat odio facilisis mauris. Habitant morbi tristique senectus
+    et netus et malesuada. Fusce id velit ut tortor. Pulvinar pellentesque habitant morbi tristique.
+    Mauris pellentesque pulvinar pellentesque habitant morbi tristique. Consequat interdum varius
+    sit amet mattis vulputate. Aliquam nulla facilisi cras fermentum odio. Elementum nisi quis
+    eleifend quam adipiscing. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Fusce ut
+    placerat orci nulla pellentesque dignissim.</p>
+
+
+<script>
+    __consent.watch(function () {
+        document.getElementById('keywords').innerHTML = 'Keywords: ' + this.keywords.join(', ');
+    });
+
+    __consent.wait(function () {
+        this.inject('test.js');
+    });
+
+    __consent.wait(function () {
+        this.allowsStandardPurposes() && this.call('ads');
+    });
+
+    __consent.on('ads', function () {
+        document.getElementById('ads').innerHTML = 'Ads initialized';
+    });
+
+    __consent.on('dialog_open', function () {
+        document.getElementsByTagName('body')[0].classList.add('scroll-lock');
+    });
+
+    __consent.on('dialog_close', function () {
+        document.getElementsByTagName('body')[0].classList.remove('scroll-lock');
+    });
+</script>
+
+<script data-src="test.js" data-consent-requires="standard" data-consent-attr="src"></script>
+
+</body>
+</html>

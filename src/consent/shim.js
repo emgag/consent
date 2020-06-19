@@ -257,6 +257,7 @@ class Consent {
 
     /**
      * Wrapper around DOM ready event
+     *
      * @param {function} callback
      */
     domready(callback){
