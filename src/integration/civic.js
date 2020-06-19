@@ -55,12 +55,12 @@ class Consent_Civic {
     }
 
     optOut(){
-        window.localStorage.removeItem('_cmpRepromptHash');
-
+        CookieControl.delete('CookieControl');
+        CookieControl.delete('CookieControlTC');
     }
 
     showUi(){
-        __tcfapi('displayConsentUi', 2, function() {} );
+        CookieControl.open()
     }
 
 }
