@@ -6,6 +6,9 @@
     <title>civic example</title>
     <link rel="stylesheet" type="text/css" href="./example.css">
     <style type="text/css">
+        #ccc-close {
+            /*display: none !important;*/
+        }
 
     </style>
     <script src="/dist/civic-bundle.js"></script>
@@ -22,6 +25,7 @@
             subDomains: true,
             initialState: 'box',
             rejectButton: false,
+            notifyDismissButton: false,
             position: 'left',
             layout: 'popup',
             theme: 'light',
@@ -60,7 +64,7 @@
             iabConfig: {
                 language: 'de',
                 publisherCC: 'CH'
-            },
+            }
         }
 
         CookieControl.load(config);
