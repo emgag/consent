@@ -20,7 +20,7 @@
   "dependencies": {
     "@iabtcf/stub": "^1.0.2-3"
   },
-  "version": "0.0.6",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:emgag/consent.git"
