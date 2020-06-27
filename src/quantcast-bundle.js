@@ -1,9 +1,9 @@
 /*
- * Consent bundle (shim & oiljs)
+ * Consent bundle (shim & Quantcast Coice)
  */
 
-import Consent_OilJS from "./integration/oiljs";
-global.Consent_OilJS = Consent_OilJS;
+import Consent_Quantcast from "./integration/quantcast";
+global.Consent_Quantcast = Consent_Quantcast;
 
 import Consent_Noop from "./integration/noop";
 global.Consent_Noop = Consent_Noop;

@@ -3,46 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>oil.js example</title>
+    <title>quantcast example</title>
     <link rel="stylesheet" type="text/css" href="./example.css">
-    <!--  oil.js stub  -->
-    <script src="/dist/external/oilstub.1.3.5-RELEASE.min.js"></script>
-    <!-- cmp wrapper -->
-    <script src="/dist/oiljs-bundle.js"></script>
-    <script>
-        var __consent = new Consent(new Consent_OilJS(), {debug: true});
-    </script>
-    <!-- oil.js -->
-    <script id="oil-configuration" type="application/configuration">
-        {
-            "config_version": 2,
-            "advanced_settings": true,
-            "advanced_settings_purposes_default": true,
-            "theme": "light",
-            "timeout": 0,
-            "locale": {
-                "version": 1,
-                "localeId": "de",
-                "texts": {
-                    "label_intro_heading": "We use cookies and other technologies",
-                    "label_intro": "The website uses cookies, web beacons, JavaScript and similar technologies."
-                }
-            },
-            "customPurposes": [
-                {
-                    "id": 25,
-                    "name": "Custom Purpose 1",
-                    "description": "Lorem!"
-                },
-                {
-                    "id": 26,
-                    "name": "Custom Purpose 2",
-                    "description": "Lorem2!"
-                }
-            ]
+    <style type="text/css">
+        .qc-cmp2-summary-info {
+            /*display: none !important;*/
         }
+
+    </style>
+    <script src="/dist/quantcast-bundle.js"></script>
+    <script>
+        var consent_provider = new Consent_Quantcast({
+            quantcastId: 'ymSNkjjBs7dcM',
+        });
+        var __consent = new Consent(consent_provider, {debug: true});
     </script>
-    <script src="/dist/external/oil.1.3.5-RELEASE.min.js"></script>
 </head>
 <body>
 <div class="info">
@@ -76,7 +51,7 @@
 
 <script>
     __consent.watch(function () {
-        document.getElementById('keywords').innerHTML = 'Keywords: ' + this.keywords;
+        document.getElementById('keywords').innerHTML = 'Keywords: ' + this.keywords.join(', ');
     });
 
     __consent.wait(function () {

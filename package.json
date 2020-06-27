@@ -1,6 +1,5 @@
 {
   "devDependencies": {
-    "@ideasio/oil.js": "^1.3.5",
     "@symfony/webpack-encore": "^0.28.2",
     "consent-string": "^1.5.2"
   },
@@ -18,7 +17,9 @@
   ],
   "license": "MIT",
   "name": "@emgag/consent",
-  "dependencies": {},
+  "dependencies": {
+    "@iabtcf/stub": "^1.0.2-3"
+  },
   "version": "0.0.6",
   "repository": {
     "type": "git",

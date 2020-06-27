@@ -1,7 +1,7 @@
 'use strict';
 
 /**
- * Wrapper around CPM to store consent data and manage consent events
+ * Wrapper around CMP to store consent data and manage consent events
  */
 class Consent {
 
@@ -17,7 +17,7 @@ class Consent {
         this.events = {};
         this.purposes = {
             'standard': {},
-            'custom': {},
+            'special': {},
         };
         this.consent = '';
 
@@ -37,7 +37,7 @@ class Consent {
             this.log('Current consent', this.consent);
             this.log('Enabled purposes', this.purposes);
             this.log('All standard purposes?', this.allowsStandardPurposes());
-            this.log('All custom purposes?', this.allowsCustomPurposes());
+            this.log('All special purposes?', this.allowsSpecialPurposes());
         });
 
         this.on('dialog_open', ()=> {this.log('Consent popup shown')});
@@ -62,8 +62,8 @@ class Consent {
             this.purposes.standard[property] && k.push('consent_standard_' + property)
         }
 
-        for (const property in this.purposes.custom) {
-            this.purposes.custom[property] && k.push('consent_custom_' + property)
+        for (const property in this.purposes.special) {
+            this.purposes.special[property] && k.push('consent_special_' + property)
         }
 
         this.log('Keywords', k);
@@ -73,7 +73,7 @@ class Consent {
     /**
      * Returns true if specific purpose has consent, false if otherwise.
      *
-     * @param {string} purpose Either a specific purpose (standard/X, custom/X) or "standard" of "custom" for all in this category.
+     * @param {string} purpose Either a specific purpose (standard/X, special/X) or "standard" of "special" for all in this category.
      * @returns {boolean}
      */
     allows(purpose){
@@ -81,8 +81,8 @@ class Consent {
             return this.allowsStandardPurposes()
         }
 
-        if(purpose === 'custom'){
-            return this.allowsCustomPurposes();
+        if(purpose === 'special'){
+            return this.allowsSpecialPurposes();
         }
 
         const p = purpose.split('/');
@@ -96,7 +96,7 @@ class Consent {
             return true;
         }
 
-        if(p[0] === 'custom' && this.purposes.custom[p[1]]){
+        if(p[0] === 'special' && this.purposes.special[p[1]]){
             return true;
         }
 
@@ -104,13 +104,13 @@ class Consent {
     }
 
     /**
-     * Returns true if all custom purposes have consent.
+     * Returns true if all special purposes have consent.
      *
      * @returns {boolean}
      */
-    allowsCustomPurposes(){
-        for (const property in this.purposes.custom) {
-            if (!this.purposes.custom[property]) return false;
+    allowsSpecialPurposes(){
+        for (const property in this.purposes.special) {
+            if (!this.purposes.special[property]) return false;
         }
 
         return true;
@@ -257,6 +257,7 @@ class Consent {
 
     /**
      * Wrapper around DOM ready event
+     *
      * @param {function} callback
      */
     domready(callback){
@@ -279,6 +280,14 @@ class Consent {
     optOut(){
         return this.provider.optOut();
     }
+
+    /**
+     * Shows user interface to change consent
+     */
+    showUi(){
+        return this.provider.showUi();
+    }
+
 }
 
 export default Consent;

@@ -6,7 +6,7 @@
     <title>noop example</title>
     <link rel="stylesheet" type="text/css" href="./example.css">
     <!-- cmp wrapper -->
-    <script src="/dist/oiljs-bundle.js"></script>
+    <script src="/dist/noop-bundle.js"></script>
     <script>
         var consent_provider = new Consent_Noop({
             domready: true,
@@ -47,7 +47,7 @@
 
 <script>
     __consent.watch(function () {
-        document.getElementById('keywords').innerHTML = 'Keywords: ' + this.keywords;
+        document.getElementById('keywords').innerHTML = 'Keywords: ' + this.keywords.join(', ');
     });
 
     __consent.watch(function () {
