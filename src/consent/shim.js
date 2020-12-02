@@ -26,6 +26,8 @@ class Consent {
             debug: config.hasOwnProperty('debug') ? !!config.debug : false,
         };
 
+        this.log('Init EMGAG Consent Handler', VERSION)
+
         provider.init(this, (purposes, consent) => {
             this.purposes = purposes;
             this.consent = consent;

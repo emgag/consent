@@ -9,6 +9,8 @@ class Consent_Civic {
     }
 
     init(consent, callback) {
+        consent.log('Init Civic Cookie Control plugin')
+
         this.open = false;
 
         __tcfapi('addEventListener', 2, (tcData, success) => {

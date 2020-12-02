@@ -173,6 +173,8 @@ class Consent_Quantcast {
     }
 
     init(consent, callback){
+        consent.log('Init Quantcast plugin')
+
         this.tag(this.quantcastId)
         this.open = false;
 

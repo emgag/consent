@@ -38,6 +38,8 @@ class Consent_Noop {
      * @param {function} callback
      */
     init(consent, callback) {
+        consent.log('Init Noop plugin')
+
         if (this.domready) {
             consent.domready(() => {
                 callback(this.purposes, this.consent);
