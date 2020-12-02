@@ -12,8 +12,11 @@ class Consent_Civic {
         this.open = false;
 
         __tcfapi('addEventListener', 2, (tcData, success) => {
-            if (!success) return false
-            consent.log('TCM API', tcData.eventStatus, tcData);
+            if (!success) {
+                consent.log('TCF API (FAIL)', tcData.eventStatus, tcData);
+            }
+
+            consent.log('TCF API', tcData.eventStatus, tcData);
 
             const commit = (tcData) => {
                 if (tcData.hasOwnProperty('purpose') && tcData.hasOwnProperty('publisher')) {
