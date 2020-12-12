@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>civic example</title>
-    <link rel="stylesheet" type="text/css" href="./example.css">
-    <style type="text/css">
-        #ccc-close {
-            /*display: none !important;*/
-        }
-
-    </style>
-    <script src="/dist/civic-bundle.js"></script>
-    <script src="https://cc.cdn.civiccomputing.com/9/cookieControl-9.2.1.min.js"></script>
+    <title>civic stub example</title>
+    <style type="text/css"></style>
+    <script src="../stub.js"></script>
     <script>
-        var consent_provider = new Consent_Civic({});
-        var __consent = new Consent(consent_provider, {debug: true});
+        console.log('Register __tcfapi event')
+
+        __tcfapi('addEventListener', 2, function (tcData, success) {
+            console.log("RUN REGISTERED STUB EVENT (1)", tcData.eventStatus, tcData, success)
+        });
+
+        __tcfapi('addEventListener', 2, function (tcData, success) {
+            console.log("RUN REGISTERED STUB EVENT (2)", tcData.eventStatus, tcData, success)
+        });
     </script>
+    <script src="https://cc.cdn.civiccomputing.com/9/cookieControl-9.3.2.min.js"></script>
+    <script src="../license.js"></script>
     <script>
         var config = {
-            apiKey: '34f2b09060ed07fb9dc437ff38a248a5bae72246',
-            product: 'PRO',
+            apiKey: license.apiKey,
+            product: license.product,
             mode: 'gdpr',
             subDomains: true,
             initialState: 'box',
@@ -29,6 +31,7 @@
             position: 'left',
             layout: 'popup',
             theme: 'light',
+            setInnerHTML: true,
             text: {
                 iabCMP: {
                     panelTitle: 'panelTitle',
@@ -53,44 +56,39 @@
                     savePreferences: 'savePreferences',
                 },
             },
-            branding: {
-                removeAbout: true,
-                removeIcon: false
-            },
             iabCMP: true,
             locale: 'de',
             locales: [],
             location: 'CH',
             iabConfig: {
                 language: 'de',
-                publisherCC: 'CH'
-            }
-        }
+                publisherCC: 'CH',
+                saveOnlyOnClose: true,
+                dropDowns: true
+            },
+            onLoad: function () {
+                console.log('Civic onLoad')
+
+                __tcfapi('addEventListener', 2, function (tcData, success) {
+                    console.log("RUN REGISTERED ONLOAD EVENT (1)", tcData.eventStatus, tcData, success)
+                });
+
+                __tcfapi('addEventListener', 2, function (tcData, success) {
+                    console.log("RUN REGISTERED ONLOAD EVENT (2)", tcData.eventStatus, tcData, success)
+                });
+            },
+            sameSiteCookie: false,
+        };
 
         CookieControl.load(config);
     </script>
-
-
 </head>
 <body>
-<div class="info">
-    <button onclick="__consent.optOut(); location.reload();">Clear consent</button>
-</div>
-<div class="info" id="keywords"></div>
-<div class="info" id="ads"></div>
+<h1>Test multiple events</h1>
 
-<p>
-    <img data-src="https://assets.gameswelt.de/pictures/logo.png" data-consent-requires="standard"
-         data-consent-attr="src">
-    <img data-src="https://assets.gameswelt.de/pictures/logo.png" data-consent-requires="standard/1"
-         data-consent-attr="src">
-    <img data-src="https://assets.gameswelt.de/pictures/logo.png"
-         data-consent-requires="standard/1,standard/2,standard/5"
-         data-consent-attr="src">
-    <img data-src="https://assets.gameswelt.de/pictures/logo.png"
-         data-consent-requires="standard/1,standard/7"
-         data-consent-attr="src">
-</p>
+<button onclick="CookieControl.delete('CookieControl'); CookieControl.delete('CookieControlTC'); location.reload()">
+    Clear consent
+</button>
 
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
     labore et dolore magna aliqua. Varius vel pharetra vel turpis nunc eget. Proin nibh nisl
@@ -144,35 +142,6 @@
     sit amet mattis vulputate. Aliquam nulla facilisi cras fermentum odio. Elementum nisi quis
     eleifend quam adipiscing. A arcu cursus vitae congue mauris rhoncus aenean vel elit. Fusce ut
     placerat orci nulla pellentesque dignissim.</p>
-
-
-<script>
-    __consent.watch(function () {
-        document.getElementById('keywords').innerHTML = 'Keywords: ' + this.keywords.join(', ');
-    });
-
-    __consent.wait(function () {
-        this.inject('test.js');
-    });
-
-    __consent.wait(function () {
-        this.allowsStandardPurposes() && this.call('ads');
-    });
-
-    __consent.on('ads', function () {
-        document.getElementById('ads').innerHTML = 'Ads initialized';
-    });
-
-    __consent.on('dialog_open', function () {
-        document.getElementsByTagName('body')[0].classList.add('scroll-lock');
-    });
-
-    __consent.on('dialog_close', function () {
-        document.getElementsByTagName('body')[0].classList.remove('scroll-lock');
-    });
-</script>
-
-<script data-src="test.js" data-consent-requires="standard" data-consent-attr="src"></script>
 
 </body>
 </html>

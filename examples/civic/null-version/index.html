@@ -5,30 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>civic stub example</title>
     <style type="text/css"></style>
-    <script src="stub.js"></script>
+    <script src="../stub.js"></script>
     <script>
-        function registerEvents(){
-            console.log('Register __tcfapi event')
+        console.log('Register __tcfapi event')
 
-            __tcfapi('addEventListener', 2, function(tcData, success){
-                console.log(tcData, success)
-            });
-        }
+        __tcfapi('addEventListener', null, function (tcData, success) {
+            console.log("RUN REGISTERED STUB EVENT (null-VERSION)", tcData.eventStatus, tcData, success)
+        });
 
-        registerEvents()
+        __tcfapi('addEventListener', 0, function (tcData, success) {
+            console.log("RUN REGISTERED STUB EVENT (0-VERSION)", tcData.eventStatus, tcData, success)
+        });
+
+        __tcfapi('addEventListener', undefined, function (tcData, success) {
+            console.log("RUN REGISTERED STUB EVENT (undefined-VERSION)", tcData.eventStatus, tcData, success)
+        });
     </script>
-    <script src="https://cc.cdn.civiccomputing.com/9/cookieControl-9.2.1.min.js"></script>
+    <script src="https://cc.cdn.civiccomputing.com/9/cookieControl-9.3.2.min.js"></script>
+    <script src="../license.js"></script>
     <script>
         var config = {
-            apiKey: '34f2b09060ed07fb9dc437ff38a248a5bae72246',
-            product: 'PRO',
+            apiKey: license.apiKey,
+            product: license.product,
             mode: 'gdpr',
             subDomains: true,
             initialState: 'box',
             rejectButton: false,
+            notifyDismissButton: false,
             position: 'left',
             layout: 'popup',
             theme: 'light',
+            setInnerHTML: true,
             text: {
                 iabCMP: {
                     panelTitle: 'panelTitle',
@@ -53,21 +60,43 @@
                     savePreferences: 'savePreferences',
                 },
             },
+            iabCMP: true,
             locale: 'de',
             locales: [],
             location: 'CH',
-            iabCMP: true,
             iabConfig: {
                 language: 'de',
-                publisherCC: 'CH'
+                publisherCC: 'CH',
+                saveOnlyOnClose: true,
+                dropDowns: true
             },
+            onLoad: function () {
+                console.log('Civic onLoad')
 
+                __tcfapi('addEventListener', null, function (tcData, success) {
+                    console.log("RUN REGISTERED ONLOAD EVENT (null-VERSION)", tcData.eventStatus, tcData, success)
+                });
+
+                __tcfapi('addEventListener', 0, function (tcData, success) {
+                    console.log("RUN REGISTERED ONLOAD EVENT (0-VERSION)", tcData.eventStatus, tcData, success)
+                });
+
+                __tcfapi('addEventListener', undefined, function (tcData, success) {
+                    console.log("RUN REGISTERED ONLOAD EVENT (undefined-VERSION)", tcData.eventStatus, tcData, success)
+                });
+            },
+            sameSiteCookie: false,
         };
+
         CookieControl.load(config);
     </script>
 </head>
 <body>
-<button onclick="registerEvents()">Register TCF Events</button>
+<h1>Test events with null-Version</h1>
+
+<button onclick="CookieControl.delete('CookieControl'); CookieControl.delete('CookieControlTC'); location.reload()">
+    Clear consent
+</button>
 
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
     labore et dolore magna aliqua. Varius vel pharetra vel turpis nunc eget. Proin nibh nisl
