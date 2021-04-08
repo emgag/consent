@@ -1,6 +1,6 @@
 {
-  "dist/civic-bundle.js": "/dist/civic-bundle.js",
   "dist/noop-bundle.js": "/dist/noop-bundle.js",
   "dist/quantcast-bundle.js": "/dist/quantcast-bundle.js",
+  "dist/civic-bundle.js": "/dist/civic-bundle.js",
   "dist/stub.js": "/dist/stub.js"
 }
