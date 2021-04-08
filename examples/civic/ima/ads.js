@@ -38,7 +38,7 @@ function setUpIMA() {
 
   // Request video ads.
   var adsRequest = new google.ima.AdsRequest();
-  adsRequest.adTagUrl = 'https://www4.smartadserver.com/ac?siteid=16708&pgid=120857&fmtid=41506&ab=1&tgt=cmptest&oc=1&out=vast4&ps=1&pb=0&visit=S&vcn=s&vph=[playerHeight]&vpw=[playerWidth]&vpmt=[playbackMethod]&tmstp=[timestamp]';
+  adsRequest.adTagUrl = 'https://ad.doubleclick.net/ddm/pfadx/N928842.3840336NOEDEWASDMEDIA/B25208594.296120346;sz=0x0;ord=[timestamp];dc_lat=;dc_rdid=;tag_for_child_directed_treatment=;tfua=;dcmt=text/xml;dc_sdk_apis=[APIFRAMEWORKS];dc_omid_p=[OMIDPARTNER];gdpr=${GDPR};gdpr_consent=${GDPR_CONSENT_755};ltd=';
 
   // Specify the linear and nonlinear slot sizes. This helps the SDK to
   // select the correct creative if multiple are returned.

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>civic + ima sdk example</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="stub.js"></script>
+    <script src="https://cc.cdn.civiccomputing.com/9/cookieControl-9.3.3.min.js"></script>
+    <script src="license.js"></script>
+</head>
+<body>
+<h1>Test Google IMA</h1>
+
+<div id="mainContainer">
+    <div id="content">
+        <video id="contentElement">
+            <source src="https://storage.googleapis.com/gvabox/media/samples/stock.mp4"></source>
+        </video>
+    </div>
+    <div id="adContainer"></div>
+</div>
+<button class="button" id="playButton">Play</button>
+<script src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
+<script src="ads.js"></script>
+
+<button class="button" onclick="location.href='index.html'">
+    Toggle CMP
+</button>
+
+<button class="button" onclick="CookieControl.delete('CookieControl'); CookieControl.delete('CookieControlTC'); location.reload()">
+    Clear consent
+</button>
+
+<script>
+    var config = {
+        apiKey: license.apiKey,
+        product: license.product,
+        mode: 'gdpr',
+        subDomains: true,
+        initialState: 'box',
+        rejectButton: false,
+        notifyDismissButton: false,
+        position: 'left',
+        layout: 'popup',
+        theme: 'light',
+        setInnerHTML: true,
+        text: {
+            iabCMP: {
+                panelTitle: 'panelTitle',
+                panelIntro1: 'panelIntro1',
+                panelIntro2: 'panelIntro2',
+                panelIntro3: 'panelIntro3',
+                aboutIab: 'aboutIab',
+                iabName: 'iabName',
+                iabLink: '',
+                dataUse: 'dataUse',
+                vendors: 'vendors',
+                purposes: 'purposes',
+                specialPurposes: 'specialPurposes',
+                features: 'features',
+                specialFeatures: 'specialFeatures',
+                purposeLegitimateInterest: 'purposeLegitimateInterest',
+                vendorLegitimateInterest: 'vendorLegitimateInterest',
+                relyConsent: 'relyConsent',
+                relyLegitimateInterest: 'relyLegitimateInterest',
+                acceptAll: 'acceptAll',
+                rejectAll: 'rejectAll',
+                savePreferences: 'savePreferences',
+            },
+        },
+        iabCMP: true,
+        locale: 'de',
+        locales: [],
+        location: 'CH',
+        iabConfig: {
+            language: 'de',
+            publisherCC: 'CH',
+            saveOnlyOnClose: true,
+            dropDowns: true
+        },
+        onLoad: function () {
+            console.log('Civic onLoad')
+
+            console.log('Watch for tcfapi calls')
+
+            const handler = {
+                apply: function(target, arg, list) {
+                    console.log('CALLED __tcfApi', arg, list);
+                    return target(...list);
+                }
+            };
+
+            window.__tcfapi = new Proxy(window.__tcfapi, handler);
+
+            console.log('Initialize IMA SDK')
+            init();
+        },
+        sameSiteCookie: false,
+    };
+
+    CookieControl.load(config);
+</script>
+
+</body>
+</html>
