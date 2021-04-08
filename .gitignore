@@ -1,5 +1,14 @@
 examples/local
 
+# yarn 2
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
+
 # Created by .ignore support plugin (hsz.mobi)
 ### Node template
 # Logs
