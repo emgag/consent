@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "@symfony/webpack-encore": "^1.0.0",
+    "@symfony/webpack-encore": "^4",
     "consent-string": "^1.5.2"
   },
   "scripts": {
@@ -9,18 +9,14 @@
     "build": "encore production --progress"
   },
   "browserslist": [
-    "> 0.5%",
-    "last 2 versions",
-    "Firefox ESR",
-    "not dead",
-    "ie >= 11"
+    "defaults"
   ],
   "license": "MIT",
   "name": "@emgag/consent",
   "dependencies": {
-    "@iabtcf/stub": "^1.0.2-3"
+    "@iabtcf/stub": "^1"
   },
-  "version": "2.2.0",
+  "version": "3.0.0",
   "repository": {
     "type": "git",
     "url": "git@github.com:emgag/consent.git"
