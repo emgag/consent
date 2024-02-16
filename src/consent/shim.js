@@ -11,6 +11,7 @@ class Consent {
      * @param {function} provider.optOut Function to be called to opt out of consent
      * @param {Object} config additional configuration
      * @param {boolean} config.debug whether debug statements should be printed
+     * @param {Array} config.events list of predefined events
      */
     constructor(provider, config) {
         this.provider = provider;
@@ -44,6 +45,12 @@ class Consent {
 
         this.on('dialog_open', ()=> {this.log('Consent popup shown')});
         this.on('dialog_close', ()=> {this.log('Consent popup close')});
+
+        if (config.hasOwnProperty('events')) {
+            config.events.forEach(event => {
+                this.on(event.name, event.callback);
+            });
+        }
 
         this.watch(this.unblock);
     }
