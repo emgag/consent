@@ -29,12 +29,6 @@ class Consent {
 
         this.log('Init EMGAG Consent Handler', VERSION)
 
-        provider.init(this, (purposes, consent) => {
-            this.purposes = purposes;
-            this.consent = consent;
-            this.call('consent')
-        });
-
         this.watch(() => {
             this.log('Active events', this.events);
             this.log('Current consent', this.consent);
@@ -53,6 +47,12 @@ class Consent {
         }
 
         this.watch(this.unblock);
+
+        provider.init(this, (purposes, consent) => {
+            this.purposes = purposes;
+            this.consent = consent;
+            this.call('consent')
+        });
     }
 
     /**
@@ -175,6 +175,8 @@ class Consent {
             callback.bind(this)();
             return
         }
+
+        console.log('on', event, callback, once);
 
         let handler = e => {
             if (
