@@ -176,8 +176,6 @@ class Consent {
             return
         }
 
-        console.log('on', event, callback, once);
-
         let handler = e => {
             if (
                 e.data.hasOwnProperty('type') &&
